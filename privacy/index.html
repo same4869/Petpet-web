@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Petpet</title>
+  <meta name="description" content="How Petpet handles your data. No backend, HealthKit read-only, opt-in analytics, BYOK AI, purchases via RevenueCat." />
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="top">
+    <div class="inner">
+      <div class="brand"><a href="../">Petpet</a></div>
+      <div class="links">
+        <a href="../#features">Features</a>
+        <a href="../#pricing">Pricing</a>
+        <a href="../support/">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <article class="legal">
+      <h1>Privacy Policy</h1>
+      <p class="date">Last updated: November 13, 2026</p>
+
+      <p>
+        Petpet is designed around a quiet promise: the journal you
+        keep about your pet belongs to you, and should feel that way.
+      </p>
+      <p>
+        This page explains, in plain English, exactly what information
+        Petpet handles, where it goes, and how you can control it. If
+        anything here is unclear, please write to the support address
+        at the bottom.
+      </p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>No Petpet-owned backend.</strong> Nothing you write in Petpet is sent to a server we operate.</li>
+        <li><strong>Your journal lives on your device.</strong> If you turn on iCloud sync, it writes to your own Apple ID container only — not to us.</li>
+        <li><strong>HealthKit is read-only.</strong> Petpet reads step count and walking distance to frame &ldquo;Walks together.&rdquo; We never write to HealthKit, and this data never leaves your device.</li>
+        <li><strong>AI Poetize is BYOK.</strong> When you use the optional AI Poetize feature, your note goes directly from your device to the AI provider whose API key you supplied. Petpet does not route, log, or copy that content.</li>
+        <li><strong>No ads, no tracking SDKs, no sign-up.</strong></li>
+        <li><strong>Opt-in diagnostics only.</strong> Analytics and crash reports are off by default and share a single switch. If you turn them on, Petpet sends anonymized, bucketed event counts to TelemetryDeck and crash reports to Sentry &mdash; never pet names, never photos, never any text you wrote.</li>
+        <li><strong>Purchases via RevenueCat.</strong> In-app purchases are validated by RevenueCat. Only Apple&rsquo;s signed receipt, the product identifier, and an anonymous RC-assigned user ID leave the device. No journal data, no device identifiers.</li>
+        <li><strong>Children under 13.</strong> Petpet is intended for ages 4+ but is not directed at children under 13. Please keep Petpet off a child&rsquo;s device if you are concerned about data minimization.</li>
+      </ul>
+      <p>If you want the full details, keep reading.</p>
+
+      <h2>What Petpet stores on your device</h2>
+      <p>
+        Petpet uses Apple&rsquo;s Core Data framework to store every
+        piece of your journal locally:
+      </p>
+      <ul>
+        <li><strong>Pets</strong>: name, species, breed, birthday, adoption day, microchip, allergies, veterinarian, cover photo reference.</li>
+        <li><strong>Entries</strong>: title, body, kind, timestamp, tags.</li>
+        <li><strong>Photos</strong>: image data (originals + thumbnails), optional captions.</li>
+        <li><strong>Weight logs</strong>: value in kilograms, date, note.</li>
+        <li><strong>Vaccine records</strong>: vaccine name, date, next due date, notes.</li>
+        <li><strong>Medication records</strong>: name, dose, schedule, active flag, notes.</li>
+      </ul>
+      <p>
+        All of this lives inside Petpet&rsquo;s own on-device
+        database. It is never automatically sent anywhere.
+      </p>
+
+      <h2>iCloud sync</h2>
+      <p>
+        Petpet uses <code>NSPersistentCloudKitContainer</code> so your
+        journal can synchronize across your iPhone and iPad. This is
+        Apple&rsquo;s standard end-to-end-encrypted sync; the data
+        moves between your devices through <strong>your</strong>
+        iCloud account.
+      </p>
+      <ul>
+        <li><strong>We cannot see it.</strong> Petpet does not run any CloudKit server; the &ldquo;backend&rdquo; is Apple&rsquo;s CloudKit on your behalf.</li>
+        <li><strong>You control it.</strong> You can turn Petpet&rsquo;s iCloud container off in Settings &rarr; [your Apple ID] &rarr; iCloud &rarr; Petpet on any of your Apple devices.</li>
+        <li><strong>Simulator / dev builds</strong>: iCloud is disabled by default in developer builds; only released builds sync.</li>
+      </ul>
+
+      <h2>HealthKit</h2>
+      <p>
+        Petpet reads two HealthKit data types to power the &ldquo;Walks
+        together&rdquo; feature and the Insights activity card:
+      </p>
+      <ul>
+        <li>Step count</li>
+        <li>Walking + running distance</li>
+      </ul>
+      <p>
+        That is all. Petpet does not request write access, cannot
+        write to your Health store, and the data is never transmitted
+        off your device. Turn it off in Settings &rarr; Activity
+        &rarr; Walks together, or revoke it in the system Health app.
+      </p>
+
+      <h2>AI Poetize (BYOK)</h2>
+      <p>
+        AI Poetize is optional and requires you to provide your own
+        OpenRouter API key.
+      </p>
+      <p>When you use it:</p>
+      <ol>
+        <li>The entry body you are rewriting, plus your pet&rsquo;s name for context, is sent in a single HTTPS request <strong>directly from your device</strong> to openrouter.ai using the key you provided.</li>
+        <li>OpenRouter forwards the request to the model you chose (Claude 3.5 Haiku by default).</li>
+        <li>The rewritten text comes back to your device and never leaves it unless you choose to share it.</li>
+      </ol>
+      <p>
+        Petpet does not see, log, or route any of this content. Your
+        API key is stored in the iOS Keychain on the device that
+        added it — not in iCloud, not synced across devices.
+      </p>
+      <p>
+        OpenRouter and the underlying model provider have their own
+        privacy policies and data-use terms. You can review them here:
+      </p>
+      <ul>
+        <li>OpenRouter: <a href="https://openrouter.ai/privacy">https://openrouter.ai/privacy</a></li>
+        <li>Anthropic (Claude): <a href="https://www.anthropic.com/legal/privacy">https://www.anthropic.com/legal/privacy</a></li>
+      </ul>
+
+      <h2>Purchases</h2>
+      <p>
+        Petpet&rsquo;s in-app purchases (Pro Monthly, Pro Annual,
+        Lifetime) are processed by Apple and validated via
+        <strong>RevenueCat</strong>, a purchases infrastructure
+        provider that handles receipt verification and entitlement
+        bookkeeping on Petpet&rsquo;s behalf.
+      </p>
+
+      <h3>What Apple sees</h3>
+      <p>
+        The payment itself is handled entirely by Apple and the
+        credit card you have on file with your Apple ID. Petpet does
+        not see or store your payment information.
+      </p>
+
+      <h3>What is sent to RevenueCat</h3>
+      <p>When you complete a purchase or tap Restore:</p>
+      <ol>
+        <li>Apple issues a signed receipt that is tied to your anonymous App Store transaction.</li>
+        <li>The Petpet app forwards that receipt, along with the product identifier (<code>com.xun.petpet.monthly</code> / <code>.yearly</code> / <code>.lifetime</code>) and an anonymous RC-assigned user ID, to RevenueCat&rsquo;s servers.</li>
+        <li>RevenueCat validates the receipt and returns the active entitlement (<code>pro</code>) back to the app.</li>
+      </ol>
+      <p>
+        That is the complete set of fields that leaves the device for
+        a purchase. No pet data, no journal content, no Apple account
+        identifiers, and no device identifiers like IDFA / IDFV.
+      </p>
+
+      <h3>Identifier</h3>
+      <p>
+        The RC-assigned user ID is created locally by the RevenueCat
+        SDK on first launch and stored on your device. It is not
+        linked to your real identity, not shared with ad networks, and
+        is reset on app uninstall.
+      </p>
+
+      <h3>Provider</h3>
+      <p>
+        RevenueCat&rsquo;s privacy policy is at
+        <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>.
+        RevenueCat does not use purchase data for advertising and does
+        not sell purchase data to third parties.
+      </p>
+
+      <h2>Diagnostics (opt-in)</h2>
+      <p>
+        Diagnostics are <strong>off by default</strong>. If you turn
+        on Settings &rarr; Diagnostics &rarr; Help improve Petpet,
+        Petpet begins doing two things: emitting bucketed event
+        counts so we can understand which features matter, and
+        sending crash reports so we can fix bugs that shipped. Both
+        are governed by the same switch.
+      </p>
+
+      <h3>Analytics &middot; what is sent</h3>
+      <p>A small, fixed set of event types, each with no raw content:</p>
+      <ul>
+        <li><code>app_launch</code> — nothing.</li>
+        <li><code>pet_added</code> — species (dog / cat / other).</li>
+        <li><code>entry_added</code> — kind (note / photo / weight / vaccine / medication / mood / walk).</li>
+        <li><code>walk_started</code> — nothing.</li>
+        <li><code>walk_ended</code> — duration bucket: <code>&lt;5m</code>, <code>5-15m</code>, <code>15-30m</code>, <code>30-60m</code>, <code>&gt;60m</code>.</li>
+        <li><code>paywall_shown</code> — which surface opened it (settings, multi-pet, lifetime-book, walks-live-activity).</li>
+        <li><code>purchase_success</code> — product ID (monthly / yearly / lifetime).</li>
+        <li><code>recap_viewed</code> — nothing.</li>
+        <li><code>ai_poetize_used</code> — nothing.</li>
+        <li><code>book_exported</code> — nothing.</li>
+      </ul>
+
+      <h3>Analytics &middot; what is never sent</h3>
+      <ul>
+        <li>Pet names.</li>
+        <li>Entry titles.</li>
+        <li>Entry bodies.</li>
+        <li>Photos or image data.</li>
+        <li>Raw walk durations (only buckets).</li>
+        <li>Which month a recap was for.</li>
+        <li>Any exact timestamps beyond when the event was received by TelemetryDeck.</li>
+        <li>Your IP address beyond what any HTTPS request contains in transit.</li>
+        <li>Any Apple identifier that could be linked to your Apple ID.</li>
+      </ul>
+
+      <h3>Analytics &middot; identifier</h3>
+      <p>
+        Petpet attaches an opaque <code>clientUser</code> string to
+        each event: the SHA-256 hash of your device&rsquo;s vendor
+        identifier (Apple&rsquo;s <code>identifierForVendor</code>).
+        This is:
+      </p>
+      <ul>
+        <li><strong>Pseudonymous.</strong> It cannot be reversed to your Apple ID or any personal identifier.</li>
+        <li><strong>Vendor-scoped.</strong> The vendor ID is unique to Petpet; no other developer sees the same value.</li>
+        <li><strong>Resettable.</strong> Uninstalling and reinstalling Petpet changes the vendor ID, and therefore the hash, to a brand-new value.</li>
+      </ul>
+
+      <h3>Analytics &middot; provider</h3>
+      <p>
+        Events are sent to <strong>TelemetryDeck</strong>, an
+        EU-based, privacy-first analytics provider. TelemetryDeck&rsquo;s
+        own privacy policy is at
+        <a href="https://telemetrydeck.com/privacy">https://telemetrydeck.com/privacy</a>.
+        TelemetryDeck does not use cookies and does not sell data to
+        third parties.
+      </p>
+
+      <h3>Crash reports &middot; what is sent</h3>
+      <p>
+        When the Diagnostics switch is on and the app crashes or
+        hits a non-fatal error Petpet wants a heads-up about, a
+        single crash envelope is sent to <strong>Sentry</strong>,
+        Petpet&rsquo;s error-monitoring provider. The envelope
+        contains:
+      </p>
+      <ul>
+        <li>The crash signal and stack trace (file names and line numbers in Petpet&rsquo;s own binary, plus the system libraries involved).</li>
+        <li>Device type (e.g.&nbsp;&ldquo;iPhone 17 Pro&rdquo;), iOS version, and free disk space at the moment of the crash.</li>
+        <li>App version and build number.</li>
+        <li>A categorical tag naming the operation that failed, for non-fatal reports only (e.g. <code>non_fatal: core_data_save</code>).</li>
+      </ul>
+
+      <h3>Crash reports &middot; what is never sent</h3>
+      <ul>
+        <li>Pet names, entry titles, entry bodies, photos, or any journal content.</li>
+        <li>Breadcrumbs that originated from any user-interface event (<code>ui.*</code> breadcrumbs are dropped before the envelope is built, because SwiftUI accessibility labels can include a pet name).</li>
+        <li>IP address beyond what any HTTPS request contains in transit; Sentry&rsquo;s default <code>user.ip_address</code> field is explicitly cleared.</li>
+        <li>Email, username, or any other user-object fields.</li>
+        <li>Any Apple identifier that could be linked to your Apple ID.</li>
+        <li>HTTP request bodies, cookies, or <code>Authorization</code> / <code>Cookie</code> / <code>X-Api-Key</code> header values; these are redacted to <code>[redacted]</code> before the envelope is built.</li>
+        <li>URL query-string parameters named <code>api_key</code>, <code>apikey</code>, <code>token</code>, <code>access_token</code>, <code>authorization</code>, <code>dsn</code>, <code>secret</code>, or <code>key</code>; their values are replaced with <code>[redacted]</code>.</li>
+      </ul>
+
+      <h3>Crash reports &middot; provider</h3>
+      <p>
+        Reports are sent to <strong>Sentry</strong>, an
+        error-monitoring provider. Sentry&rsquo;s privacy policy
+        is at
+        <a href="https://sentry.io/privacy">https://sentry.io/privacy</a>.
+        Sentry processes crash reports as a data processor on
+        Petpet&rsquo;s behalf, does not sell crash data to third
+        parties, and does not use Petpet&rsquo;s crash data for
+        its own product analytics beyond aggregate SDK telemetry.
+      </p>
+
+      <h3>Crash reports &middot; retention and lifecycle</h3>
+      <ul>
+        <li><strong>Opt-out is absolute.</strong> Petpet starts the Sentry SDK on every launch so crash handlers are armed, but every outgoing event is dropped by an in-app <code>beforeSend</code> filter until the Diagnostics switch is on. There is no &ldquo;queued while opted out&rdquo; path.</li>
+        <li><strong>Sessions are disabled.</strong> Sentry&rsquo;s optional per-launch session pings are turned off, because those envelopes bypass the opt-in filter.</li>
+        <li><strong>Performance / tracing is disabled.</strong> Petpet does not emit spans, tracing, or performance envelopes.</li>
+      </ul>
+
+      <h3>Turning it off</h3>
+      <p>
+        Settings &rarr; Diagnostics &rarr; Help improve Petpet. The
+        toggle takes effect immediately. No further events or
+        crash reports are sent until you turn it back on.
+      </p>
+
+      <h2>Permissions Petpet may ask for</h2>
+      <ul>
+        <li><strong>Photo Library</strong>: to attach photos to entries. Required only if you use the photo attach action.</li>
+        <li><strong>Notifications</strong>: for vaccine reminders, if you opt in.</li>
+        <li><strong>HealthKit</strong>: for Walks together, if you opt in.</li>
+      </ul>
+      <p>
+        Petpet does <strong>not</strong> ask for Camera, Location, or
+        &ldquo;Add to Photo Library&rdquo; permissions. The binary
+        ships without the matching <code>NSCameraUsageDescription</code> /
+        <code>NSLocationWhenInUseUsageDescription</code> /
+        <code>NSPhotoLibraryAddUsageDescription</code> strings; grep
+        the source and you&rsquo;ll find no <code>AVCaptureDevice</code>,
+        no <code>CLLocationManager</code>, and no
+        <code>UIImageWriteToSavedPhotosAlbum</code> anywhere in v1.
+      </p>
+      <p>
+        You can revoke any permission at any time in iOS Settings
+        &rarr; Petpet.
+      </p>
+
+      <h2>Data export and deletion</h2>
+      <ul>
+        <li><strong>Export (Petpet Pro).</strong> Pet Profile &rarr; Create Lifetime Book generates a keepsake PDF of a pet&rsquo;s journal entries. The PDF is rendered entirely on-device and handed to the system share sheet.</li>
+        <li><strong>Export (JSON archive).</strong> A full-journal JSON archive is planned for a future release and will land as &ldquo;Settings &rarr; Data &rarr; Export.&rdquo; Today, the Settings &rarr; Data &rarr; Export row shows &ldquo;Coming soon.&rdquo;</li>
+        <li><strong>Delete your Petpet journal.</strong> To remove every Petpet record from your device, uninstall the app from iOS (long-press the icon &rarr; Remove App &rarr; Delete App). The local Core Data store is deleted as part of app removal.</li>
+        <li><strong>Delete from iCloud.</strong> If you had iCloud sync on, the records also live in your iCloud account. iCloud Settings &rarr; Manage Storage &rarr; Petpet &rarr; Delete Data wipes them from your iCloud container. Alternatively, signing Petpet out of iCloud under Settings &rarr; [your Apple ID] &rarr; iCloud &rarr; Petpet before uninstalling leaves the device copy intact but detaches it from sync.</li>
+        <li>An in-app &ldquo;Erase all data&rdquo; action is planned alongside the JSON export in a future release.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>
+        Petpet is rated 4+ and contains nothing objectionable, but it
+        is not directed at children under 13 and does not knowingly
+        collect any information from children under 13.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If the privacy posture changes (adding a new provider, adding
+        a new analytics event, changing retention), this page is
+        updated and the new &ldquo;Last updated&rdquo; date at the
+        top reflects the change.
+      </p>
+      <p>
+        Material changes — anything that broadens what we collect or
+        where it goes — will also be surfaced in-app on next launch
+        via a small sheet so you can review before continuing.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        If anything on this page is unclear, or you want to exercise
+        a privacy right under GDPR, CCPA, or similar regulation:
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:privacy@petpet.app">privacy@petpet.app</a>
+      </p>
+      <p>Please allow up to 30 days for a response.</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="../">Home</a>
+      <a href="../support/">Support</a>
+      <a href="https://github.com/same4869/app-160-Petpet">Source</a>
+    </div>
+    <div>&copy; 2026 Xun Wang &middot; Built with SwiftUI</div>
+  </footer>
+</body>
+</html>

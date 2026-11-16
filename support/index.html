@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Petpet</title>
+  <meta name="description" content="How to get help with Petpet. FAQ, troubleshooting, and the support email." />
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="top">
+    <div class="inner">
+      <div class="brand"><a href="../">Petpet</a></div>
+      <div class="links">
+        <a href="../#features">Features</a>
+        <a href="../#pricing">Pricing</a>
+        <a href="../privacy/">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <article class="legal">
+      <h1>Support</h1>
+      <p class="date">Last updated: November 13, 2026</p>
+
+      <p>
+        If you can&rsquo;t find your answer below, send a short note
+        to <a href="mailto:hello@petpet.app">hello@petpet.app</a>
+        with:
+      </p>
+      <ul>
+        <li>Your iOS version (Settings &rarr; General &rarr; About).</li>
+        <li>Device (iPhone 15 Pro, iPad Pro 13&quot;, etc.).</li>
+        <li>What you were trying to do, and what happened instead.</li>
+      </ul>
+      <p>
+        Please allow one to two business days for a reply. Petpet is
+        maintained by one person; thoughtful notes always get
+        thoughtful replies, but same-day turnaround isn&rsquo;t a
+        promise.
+      </p>
+
+      <h2>Getting started</h2>
+
+      <h3>Adding your first pet</h3>
+      <p>
+        On first launch, Petpet walks you through adding one pet with
+        a photo, species, breed, birthday, and adoption day. You can
+        edit everything later from the Pet Profile tab, and the
+        birthday / adoption day both drive the counters you see on
+        the Timeline and in Insights.
+      </p>
+
+      <h3>Adding entries</h3>
+      <p>
+        The &ldquo;+&rdquo; button on the Timeline opens the entry
+        composer. Pick a kind (note, photo, weight, vaccine,
+        medication, mood, walk), add detail, save. Entries always
+        attach to the currently selected pet.
+      </p>
+
+      <h3>Switching pets</h3>
+      <p>
+        Free Petpet supports one pet. Petpet Pro supports multiple
+        pets; the pet avatar in the top-right of each tab opens a
+        picker.
+      </p>
+
+      <h2>iCloud sync</h2>
+
+      <h3>How does it work?</h3>
+      <p>
+        Petpet uses Apple&rsquo;s standard CloudKit sync through the
+        <code>NSPersistentCloudKitContainer</code>. When you turn it
+        on, your journal entries are mirrored to your own iCloud
+        account — the same account that already syncs your Contacts,
+        Notes, and Photos.
+      </p>
+
+      <h3>My entries aren&rsquo;t appearing on my other device</h3>
+      <p>Check, in order:</p>
+      <ol>
+        <li>Both devices are signed into the same Apple ID.</li>
+        <li>iCloud Drive is on: Settings &rarr; [your Apple ID] &rarr; iCloud &rarr; iCloud Drive.</li>
+        <li>Petpet is enabled under iCloud Drive: Settings &rarr; [your Apple ID] &rarr; iCloud &rarr; Show All &rarr; Petpet toggle on.</li>
+        <li>Both devices have network. First-sync can take several minutes for a journal with many photos.</li>
+      </ol>
+      <p>
+        If you still don&rsquo;t see the entries, force-quit Petpet
+        on both devices and relaunch. CloudKit refreshes on launch.
+      </p>
+
+      <h3>Can I turn off sync but keep the data on this device?</h3>
+      <p>
+        Yes. Settings &rarr; [your Apple ID] &rarr; iCloud &rarr;
+        Show All &rarr; Petpet, and toggle it off. The local journal
+        stays intact; new entries simply stop mirroring to iCloud.
+      </p>
+
+      <h2>Photos</h2>
+
+      <h3>Where are my photos stored?</h3>
+      <p>
+        Inside Petpet&rsquo;s own Core Data store. Petpet does
+        <strong>not</strong> add the photos you attach to the system
+        Photos library. Likewise, deleting a photo inside Petpet does
+        not touch the system Photos library.
+      </p>
+
+      <h3>Can I reuse a photo from the system library?</h3>
+      <p>
+        Yes — the attach action uses Apple&rsquo;s photo picker.
+        Petpet copies the selected image into its own store, so the
+        two live independently from that point on.
+      </p>
+
+      <h2>HealthKit &amp; Walks together</h2>
+
+      <h3>Why does Petpet need HealthKit?</h3>
+      <p>
+        Walks together counts <strong>your</strong> steps and walking
+        distance as time spent with your pet. The feature reads two
+        HealthKit types (step count + walking + running distance)
+        read-only; nothing is ever written to Health, and the data
+        never leaves your device.
+      </p>
+
+      <h3>I denied HealthKit by mistake</h3>
+      <p>
+        Open the system Health app &rarr; your profile icon
+        (top-right) &rarr; Apps &rarr; Petpet, and re-enable the
+        permissions. Petpet picks it up on the next launch.
+      </p>
+
+      <h3>Walks together on iPad</h3>
+      <p>
+        iPads don&rsquo;t collect step data the way an iPhone does.
+        Petpet will show your iPhone&rsquo;s step data on the iPad
+        only if your iPad has Health data syncing from your iPhone
+        turned on (Health app on the iPad &rarr; Browse &rarr; Walking).
+      </p>
+
+      <h2>AI Poetize</h2>
+
+      <h3>What is this and why do I need my own key?</h3>
+      <p>
+        AI Poetize rewrites a note in a more lyrical voice. Petpet
+        intentionally does not operate the AI backend — we want you
+        to control which provider sees your text. The feature uses
+        OpenRouter; the free tier includes several models and the
+        setup is a two-minute task.
+      </p>
+
+      <h3>How do I set it up?</h3>
+      <ol>
+        <li>Create an account at <a href="https://openrouter.ai">openrouter.ai</a>.</li>
+        <li>Generate an API key (keys page, not the chat UI).</li>
+        <li>In Petpet: Settings &rarr; AI Poetize &rarr; Set OpenRouter API key. Paste the key and save.</li>
+      </ol>
+      <p>
+        The key is stored in the iOS Keychain on the device that
+        added it. Petpet does not sync it to iCloud or to other
+        devices.
+      </p>
+
+      <h3>It says my key is invalid</h3>
+      <p>
+        Open <a href="https://openrouter.ai/keys">openrouter.ai/keys</a>,
+        confirm the key is still active, and double-check you
+        didn&rsquo;t include leading or trailing whitespace when you
+        pasted it.
+      </p>
+
+      <h2>Purchases &amp; subscriptions</h2>
+
+      <h3>What does Pro unlock?</h3>
+      <p>
+        Multiple pets, the Lifetime Book PDF export, the home-screen
+        widget, the Live Activity for walks, Advanced Insights, and
+        future Pro-tier features.
+      </p>
+
+      <h3>Why are there three plans?</h3>
+      <p>
+        Because different people buy software differently. The
+        monthly subscription ($3.99/month) is for anyone who wants to
+        try Pro without a long commitment. The annual subscription
+        ($29.99/year) is the mainstream choice and includes a 7-day
+        free trial. The Lifetime purchase ($79.99 once) is for
+        readers who already know the app fits their life and
+        don&rsquo;t want to think about a subscription again.
+      </p>
+
+      <h3>How do I restore my purchase after reinstalling?</h3>
+      <p>
+        Settings &rarr; Account &rarr; Restore purchases. As long as
+        you&rsquo;re signed into the same Apple ID that made the
+        purchase, Pro will re-activate within a few seconds.
+      </p>
+
+      <h3>How do I cancel?</h3>
+      <p>
+        iOS Settings &rarr; [your Apple ID] &rarr; Subscriptions
+        &rarr; Petpet. Apple controls the cancellation flow; Petpet
+        cannot force-cancel a subscription on your behalf.
+      </p>
+      <p>
+        The Lifetime purchase is a one-time payment and has nothing
+        to cancel.
+      </p>
+
+      <h3>Family Sharing</h3>
+      <p>
+        Pro subscriptions and the Lifetime purchase both support
+        Family Sharing. Enable it on the family organizer&rsquo;s
+        device under iOS Settings &rarr; [your Apple ID] &rarr;
+        Family Sharing &rarr; Subscriptions &rarr; Petpet.
+      </p>
+
+      <h2>Notifications</h2>
+
+      <h3>Vaccine reminders</h3>
+      <p>
+        When you add a vaccine with a &ldquo;next due&rdquo; date,
+        Petpet schedules a local notification one week before and
+        another on the due date. Notifications are scheduled
+        on-device; nothing is sent to a push server.
+      </p>
+
+      <h3>I&rsquo;m not receiving reminders</h3>
+      <ol>
+        <li>iOS Settings &rarr; Notifications &rarr; Petpet: Allow Notifications on, Banners / Sounds / Badges as you prefer.</li>
+        <li>Focus / Do Not Disturb isn&rsquo;t silencing Petpet.</li>
+        <li>In Petpet: Settings &rarr; Notifications, confirm the vaccine reminders switch is on.</li>
+      </ol>
+
+      <h2>Widget &amp; Live Activity</h2>
+
+      <h3>The widget shows stale info</h3>
+      <p>
+        iOS throttles widget reloads. Petpet requests a timeline
+        refresh after every save; iOS usually honors it within a
+        minute or two but may delay it further to preserve battery.
+        Removing and re-adding the widget forces an immediate
+        reload.
+      </p>
+
+      <h3>Live Activity isn&rsquo;t appearing on the Lock Screen</h3>
+      <ol>
+        <li>iOS Settings &rarr; Face ID &amp; Passcode: Live Activities on when locked = on.</li>
+        <li>iOS Settings &rarr; Notifications &rarr; Petpet &rarr; Live Activities = on.</li>
+        <li>Live Activities require at least 60 seconds of a tracked walk; shorter sessions are treated as accidental.</li>
+      </ol>
+
+      <h2>Troubleshooting</h2>
+
+      <h3>The app crashed on launch</h3>
+      <p>
+        Force-quit and relaunch. If it happens again, try toggling
+        iCloud sync off and back on from iOS Settings. If that
+        doesn&rsquo;t help, write to
+        <a href="mailto:hello@petpet.app">hello@petpet.app</a> with
+        the exact iOS version and the device.
+      </p>
+
+      <h3>Timeline is slow to open with hundreds of entries</h3>
+      <p>
+        This is a known optimization area. Petpet paginates entries
+        and caches thumbnails; the first open after a cold launch
+        can take a couple of seconds on an older iPhone. Subsequent
+        opens are instant.
+      </p>
+
+      <h3>I want to delete everything</h3>
+      <p>
+        Uninstall the app from iOS (long-press the icon &rarr;
+        Remove App &rarr; Delete App). The local Core Data store is
+        removed with the app. If you had iCloud sync on, the records
+        also live in your iCloud account — iCloud Settings &rarr;
+        Manage Storage &rarr; Petpet &rarr; Delete Data wipes them
+        from your iCloud container.
+      </p>
+
+      <h2>TestFlight</h2>
+      <p>
+        Petpet is finishing its M1 build. If you want an early seat,
+        send a short note to
+        <a href="mailto:hello@petpet.app?subject=TestFlight%20for%20Petpet">hello@petpet.app</a>
+        with the Apple ID email you use for TestFlight. Invites are
+        sent in small batches to keep the feedback loop manageable.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        <strong>General support</strong>:
+        <a href="mailto:hello@petpet.app">hello@petpet.app</a>
+      </p>
+      <p>
+        <strong>Privacy requests</strong> (GDPR / CCPA / similar):
+        <a href="mailto:privacy@petpet.app">privacy@petpet.app</a>
+      </p>
+      <p>
+        <strong>Bugs with repro steps</strong>: open a GitHub issue
+        at
+        <a href="https://github.com/same4869/app-160-Petpet/issues">github.com/same4869/app-160-Petpet/issues</a>.
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="../">Home</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://github.com/same4869/app-160-Petpet">Source</a>
+    </div>
+    <div>&copy; 2026 Xun Wang &middot; Built with SwiftUI</div>
+  </footer>
+</body>
+</html>
