@@ -5,7 +5,7 @@ The lifetime book for your pet. Private, forever yours.
 A quiet, private iOS app to remember every page of your pet's life — kept on
 your iCloud, not on social feeds. Coming early 2027.
 
-- 🌐 Live site: _enabling GitHub Pages…_
+- 🌐 Live site: https://petpet-app.pages.dev
 - 📱 iOS app: in development · [join the waitlist](#)
 
 ---
